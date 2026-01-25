@@ -1,0 +1,89 @@
+{
+	"global": {
+		"name": "Name",
+		"price": "Price",
+		"currency": "Currency",
+		"monthly": "Monthly",
+		"quarterly": "Quarterly",
+		"halfYearly": "Half yearly",
+		"yearly": "Yearly"
+	},
+	"pages": {
+		"subscription": "Subscription",
+		"group": "Group"
+	},
+	"currency": {
+		"usd": "USD",
+		"eur": "EUR",
+		"uah": "UAH"
+	},
+    "landing": {
+        "header": {
+            "menu": {
+                "home": "Головна",
+                "aboutUs": "Про нас",
+                "services": "Сервіс",
+                "features": "Переваги",
+                "faq": "Питання"
+            },
+            "cabinet": "Кабінет"
+        }
+    },
+	"notifications": {
+		"errors": {
+			"error": "Error",
+			"login": "Login error",
+			"completeAllField": "Complete all field",
+			"incorrectEmailFormat": "Incorrect email format",
+			"nameLength": "Name must be at least 2 characters long",
+			"passwordLength": "Password must be at least 6 characters long"
+		},
+		"success": {
+			"success": "Success",
+			"accountRegistered": "Account was registered",
+			"loginSuccess": "Login success"
+		}
+	},
+    "auth": {
+        "loginTitle": "Login to your account",
+		"loginSubtitle": "Enter your details to log in to your account",
+		"login": "Login",
+        "password": "Password",
+        "signIn": "Sign in",
+        "dontHaveAccount": "Don't have an account?",
+        "signUp": "Sign up",
+		"signUpTitle": "Create an account",
+		"signUpSubtitle": "Enter your information below to create your account",
+		"name": "Name",
+		"passwordLength": "Must be at least 6 characters long",
+		"createAccount": "Create Account",
+		"alreadyHaveAccount": "Already have an account?",
+		"email": "Email",
+		"accountCreating": "Account creating"
+    },
+	"actions": {
+		"actions": "Actions",
+		"create": "Create",
+		"update": "Update",
+		"delete": "Delete",
+		"save": "Save",
+		"cancel": "Cancel",
+		"createSubscription": "Create subscription",
+		"updateSubscription": "Update subscription",
+		"deleteDescription": "Are you sure you want to delete this? We will not be able to restore this data if you change your mind"
+	},
+	"statuses": {
+		"status": "Status",
+		"active": "Active",
+		"unActive": "Un active"
+	},
+	"subscription": {
+		"title": "Subscriptions",
+		"emptyTitle": "No Subscriptions Yet",
+		"emptySubtitle": " You haven't created any subscriptions yet. Get started by creating your first subscription",
+		"createSubscriptionDescription": "Enter your plan details and service settings to create a subscription",
+		"serviceName": "Service name",
+		"billingType": "Billing type",
+		"billingDay": "Billing day"
+	}
+}

@@ -1,0 +1,89 @@
+{
+	"global": {
+		"name": "Імʼя",
+		"price": "Вартість",
+		"currency": "Валюта",
+		"monthly": "Місячна",
+		"quarterly": "Квартальна",
+		"halfYearly": "Піврічна",
+		"yearly": "Річна"
+	},
+	"pages": {
+		"subscription": "Підписки",
+		"group": "Групи"
+	},
+	"currency": {
+		"usd": "USD",
+		"eur": "EUR",
+		"uah": "UAH"
+	},
+    "landing": {
+        "header": {
+            "menu": {
+                "home": "Головна",
+                "aboutUs": "Про нас",
+                "services": "Сервіс",
+                "features": "Переваги",
+                "faq": "Питання"
+            },
+            "cabinet": "Кабінет"
+        }
+    },
+    "notifications": {
+        "errors": {
+			"error": "Помилка", 
+			"login": "Помилка входу",
+			"completeAllField": "Заповніть всі поля",
+			"incorrectEmailFormat": "Неправильний формат електронної пошти",
+			"nameLength": "Ім'я має містити щонайменше 2 символи",
+			"passwordLength": "Пароль має містити щонайменше 6 символів"
+        },
+		"success": {
+			"success": "Успіх",
+			"accountRegistered": "Обліковий запис зареєстровано",
+			"loginSuccess": "Вхід успішний"
+		}
+    },
+    "auth": {
+        "loginTitle": "Увійти до свого облікового запису",
+        "loginSubtitle": "Введіть свої дані, щоб увійти до свого облікового запису",
+        "login": "Логін",
+        "password": "Пароль",
+        "signIn": "Увійти",
+        "dontHaveAccount": "Немає облікового запису?",
+        "signUp": "Зареєструватися",
+		"signUpTitle": "Створити обліковий запис",
+		"signUpSubtitle": "Введіть свою інформацію нижче, щоб створити обліковий запис",
+		"name": "Ім'я",
+		"passwordLength": "Повинен містити щонайменше 6 символів",
+		"createAccount": "Створити обліковий запис",
+		"alreadyHaveAccount": "Вже маєте обліковий запис?",
+		"email": "Електронна адреса",
+		"accountCreating": "Акаунт створюється"
+	},
+	"actions": {
+		"actions": "Дії",
+		"create": "Створити",
+		"update": "Редагувати",
+		"delete": "Видалити",
+		"save": "Зберегти",
+		"cancel": "Відмінити",
+		"createSubscription": "Створити підписку",
+		"updateSubscription": "Редагувати підписку",
+		"deleteDescription": "Ви точно хочете це видалити? Ми не зможемо відновити ці дані, якщо ви зміните рішення"
+	},
+	"statuses": {
+		"status": "Статус",
+		"active": "Активний",
+		"unActive": "Неактивний"
+	},
+	"subscription": {
+		"title": "Підписки",
+		"emptyTitle": "Підписок ще немає",
+		"emptySubtitle": "Ви ще не створили жодної підписки. Почніть зі створення своєї першої підписки",
+		"createSubscriptionDescription": "Вкажіть деталі тарифного плану та налаштування сервісу, щоб створити підписку",
+		"serviceName": "Назва сервісу",
+		"billingType": "Тип підписки",
+		"billingDay": "День оплати"
+	}
+}
