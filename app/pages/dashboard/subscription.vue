@@ -10,8 +10,9 @@ const { t } = useI18n()
 import { useGetCurrencies } from '~/composables/useGetCurrencies'
 import UpdateSubscription from '~/components/forms/UpdateSubscription.vue'
 import ConfirmModal from '~/components/forms/ConfirmModal.vue'
+const toast = useToast()
 
-const { getSubscriptions } = useSubscriptionStore()
+const { getSubscriptions, createSubscription } = useSubscriptionStore()
 
 const { subscriptions } = storeToRefs(useSubscriptionStore())
 
@@ -30,9 +31,19 @@ const currencies = useGetCurrencies()
 const statuses = useGetStatuses()
 const billingTypes = useGetBillingTypes()
 
-const createSubscription = async (data: CreateSubscriptionPayload) => {
+const createNewSubscription = async (data: CreateSubscriptionPayload) => {
     console.log(data)
     showCreateModal.value = false
+    try {
+        await createSubscription(data)
+        toast.add({
+            severity: 'success',
+            summary: t('notifications.success.success'),
+            detail: t('notifications.success.wasCreated'),
+            life: 3000,
+        })
+        await getSubscriptions()
+    } catch (e) {}
 }
 
 const updateSubscription = async (data: UpdateSubscriptionPayload) => {
@@ -45,6 +56,8 @@ const deleteSubscription = async () => {
     showDeleteModal.value = false
 }
 
+await getSubscriptions()
+
 definePageMeta({
     layout: 'dashboard',
 })
@@ -54,7 +67,7 @@ definePageMeta({
     <Dialog :open="showCreateModal" @update:open="showCreateModal = $event">
         <CreateSubscription
             v-model:open="showCreateModal"
-            @create="createSubscription"
+            @create="createNewSubscription"
             @close="showCreateModal = false"
         />
     </Dialog>

@@ -70,7 +70,10 @@
 		"success": {
 			"success": "Success",
 			"accountRegistered": "Account was registered",
-			"loginSuccess": "Login success"
+			"loginSuccess": "Login success",
+			"wasCreated": "Successfully was created",
+			"wasDeleted": "Successfully was deleted",
+			"wasUpdated": "Successfully was updated"
 		}
 	},
     "auth": {
@@ -113,6 +116,7 @@
 		"createSubscriptionDescription": "Enter your plan details and service settings to create a subscription",
 		"serviceName": "Service name",
 		"billingType": "Billing type",
-		"billingDay": "Billing day"
+		"billingDay": "Billing day",
+		"nextBillingDate": "Next Billing Date"
 	}
 }

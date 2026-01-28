@@ -23,3 +23,9 @@
 .delete-icon:hover {
     color: #EF4444
 }
+
+@media screen and (max-width: 480px) {
+    :root {
+        --p-toast-width: 20rem !important;
+    }
+}

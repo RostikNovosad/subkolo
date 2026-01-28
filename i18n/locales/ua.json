@@ -75,7 +75,10 @@
 		"success": {
 			"success": "Успіх",
 			"accountRegistered": "Обліковий запис зареєстровано",
-			"loginSuccess": "Вхід успішний"
+			"loginSuccess": "Вхід успішний",
+			"wasCreated": "Успішно було створено",
+			"wasDeleted": "Успішно було видалено",
+			"wasUpdated": "Успішно було оновлено"
 		}
     },
     "auth": {
@@ -118,6 +121,7 @@
 		"createSubscriptionDescription": "Вкажіть деталі тарифного плану та налаштування сервісу, щоб створити підписку",
 		"serviceName": "Назва сервісу",
 		"billingType": "Тип підписки",
-		"billingDay": "День оплати"
+		"billingDay": "День оплати",
+		"nextBillingDate": "Дата наступної оплати"
 	}
 }

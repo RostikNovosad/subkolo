@@ -1,8 +1,17 @@
 <script setup lang="ts">
+import {
+    CalendarDate,
+    DateFormatter,
+    getLocalTimeZone,
+    parseDate,
+    today,
+} from '@internationalized/date'
+import { Calendar as CalendarIcon } from 'lucide-vue-next'
+import { cn } from '@/lib/utils'
 import { useGetCurrencies } from '~/composables/useGetCurrencies'
 import type { Subscription } from '~/stores/subscriptions'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 const props = defineProps<{
     currentData: Subscription | {}
@@ -14,13 +23,27 @@ const currencies = useGetCurrencies()
 const statuses = useGetStatuses()
 const billingTypes = useGetBillingTypes()
 
+const df = computed(
+    () => new DateFormatter(locale.value, { dateStyle: 'long' })
+)
+const dateValue = ref<CalendarDate>(
+    props.currentData?.nextBillingDate
+        ? parseDate(props.currentData.nextBillingDate)
+        : today(getLocalTimeZone())
+)
 const formData = ref({
     name: props.currentData?.name,
     price: props.currentData?.price,
     currency: props.currentData?.currency,
     billingType: props.currentData?.billingType,
-    billingDay: props.currentData?.billingDay,
+    nextBillingDate: props.currentData?.nextBillingDate,
     status: props.currentData?.status,
+})
+
+watch(dateValue, (newDate) => {
+    if (newDate) {
+        formData.value.nextBillingDate = newDate.toString()
+    }
 })
 </script>
 
@@ -109,31 +132,38 @@ const formData = ref({
                     </Select>
                 </div>
                 <div class="grid gap-2">
-                    <Label for="name-1">
-                        {{ t('subscription.billingDay') }}
-                    </Label>
-                    <Select v-model="formData.billingDay">
-                        <SelectTrigger id="billing-day" class="w-full">
-                            <SelectValue
-                                :placeholder="t('subscription.billingDay')"
+                    <Label>{{ t('subscription.nextBillingDate') }}</Label>
+                    <Popover>
+                        <PopoverTrigger as-child>
+                            <Button
+                                variant="outline"
+                                :class="
+                                    cn(
+                                        'w-full justify-start text-left font-normal',
+                                        !dateValue && 'text-muted-foreground'
+                                    )
+                                "
+                            >
+                                <CalendarIcon class="mr-2 h-4 w-4" />
+                                {{
+                                    dateValue
+                                        ? df.format(
+                                              dateValue.toDate(
+                                                  getLocalTimeZone()
+                                              )
+                                          )
+                                        : t('global.pickDate')
+                                }}
+                            </Button>
+                        </PopoverTrigger>
+                        <PopoverContent class="w-auto p-0">
+                            <Calendar
+                                v-model="dateValue"
+                                :locale="locale"
+                                initial-focus
                             />
-                        </SelectTrigger>
-                        <SelectContent
-                            class="justify-self-center p-2 max-w-content"
-                        >
-                            <div class="grid grid-cols-7 gap-1">
-                                <SelectItem
-                                    v-for="day in 31"
-                                    :key="day"
-                                    :value="day"
-                                    class="justify-self-center flex items-center justify-center p-0 h-9 w-9 focus:bg-primary focus:text-primary-foreground data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
-                                    hide-indicator
-                                >
-                                    <span class="text-sm">{{ day }}</span>
-                                </SelectItem>
-                            </div>
-                        </SelectContent>
-                    </Select>
+                        </PopoverContent>
+                    </Popover>
                 </div>
             </div>
             <DialogFooter>

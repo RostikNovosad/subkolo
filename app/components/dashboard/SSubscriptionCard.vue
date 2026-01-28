@@ -55,13 +55,15 @@ const billingTypes = useGetBillingTypes()
                         variant="default"
                         :style="{
                             backgroundColor: billingTypes.find(
-                                (el) => el.id === props.subscription.billingType
+                                (el) =>
+                                    el.id === props.subscription.billing_type
                             )?.color,
                         }"
                     >
                         {{
                             billingTypes.find(
-                                (el) => el.id === props.subscription.billingType
+                                (el) =>
+                                    el.id === props.subscription.billing_type
                             )?.name
                         }}
                     </Badge>
@@ -85,8 +87,8 @@ const billingTypes = useGetBillingTypes()
                 <div class="flex items-center gap-2">
                     <Calendar class="h-4 w-4" />
                     <span>
-                        {{ t('subscription.billingDay') }}:
-                        {{ subscription.billingDay }}
+                        {{ t('subscription.nextBillingDate') }}:
+                        {{ subscription.next_billing_date }}
                     </span>
                 </div>
             </div>
