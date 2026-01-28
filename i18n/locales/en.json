@@ -27,7 +27,36 @@
                 "faq": "Питання"
             },
             "cabinet": "Кабінет"
-        }
+        },
+		"hero": {
+			"title": "Your Subscription Circle",
+			"subtitle": "We calculate everyone’s share and send automated payment reminders. No more playing the 'debt collector' for your friends",
+			"getStarted": "Get Started",
+			"badge": "Made with love from Ukraine"
+		},
+		"features": {
+			"title": "More than just a subscription list",
+			"subtitle": "",
+			"list": {
+				"0": {
+					"title": "Complete Visibility",
+					"subtitle": "A single dashboard for all your services. Track renewal dates, prices, and total monthly spending without checking your bank statements"
+				},
+				"1": {
+					"title": "Smart Cost Splitting",
+					"subtitle": "Create groups for family plans. We automatically calculate each member's exact share based on the total price and group size"
+				},
+				"2": {
+					"title": "Effortless Reminders",
+					"subtitle": "SubKolo notifies you before bills are due and reminds group members to pay their share. No more awkward debt-chasing"
+				}
+			}
+		},
+		"footer": {
+			"title": "SubKolo",
+			"subtitle": "Life’s too short to remind people about Spotify payments every month.",
+			"allRightReserved": "© 2026 SubKolo. All rights reserved."
+		}
     },
 	"notifications": {
 		"errors": {

@@ -72,13 +72,13 @@ export default defineNuxtConfig({
     },
 
     modules: [
-      'shadcn-nuxt',
-      '@nuxtjs/i18n',
-      '@pinia/nuxt',
-      '@nuxt/icon',
-      '@primevue/nuxt-module',
-      '@nuxtjs/supabase',
-      '@vite-pwa/nuxt',
+        'shadcn-nuxt',
+        '@nuxtjs/i18n',
+        '@pinia/nuxt',
+        '@nuxt/icon',
+        '@primevue/nuxt-module',
+        '@nuxtjs/supabase',
+        '@vite-pwa/nuxt',
     ],
 
     pinia: {
@@ -180,6 +180,6 @@ export default defineNuxtConfig({
     },
 
     imports: {
-        dirs: ['stores', 'composables', 'types', 'components'],
+        dirs: ['stores', 'composables', 'types', 'components', 'utils'],
     },
 })

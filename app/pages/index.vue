@@ -5,7 +5,13 @@ definePageMeta({
 </script>
 
 <template>
-    <LandingSHeader />
+    <div class="landing-container">
+        <LandingSHeader />
+        <LandingSHero />
+        <LandingSFeatures />
+        <LandingSFeedback />
+        <LandingSFooter />
+    </div>
 </template>
 
 <style scoped></style>

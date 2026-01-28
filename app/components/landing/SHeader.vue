@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const { t } = useI18n()
-const router = useRouter()
 
 const menu = ref([
     { id: 0, title: t('landing.header.menu.home'), path: '#hero' },
@@ -23,11 +22,6 @@ const goToSection = () => {
     const menu = document.querySelector('.header__mobile-menu')
     menu?.classList.toggle('open')
     mobileMenuOpen.value = !mobileMenuOpen.value
-}
-
-const goToLogin = () => {
-    document.body.classList.remove('modal-open')
-    router.push('/dashboard')
 }
 </script>
 
@@ -57,10 +51,10 @@ const goToLogin = () => {
                 <Icon
                     v-if="mobileMenuOpen"
                     name="material-symbols:close-rounded"
-                    size="24"
+                    size="32"
                 />
 
-                <Icon v-else name="material-symbols:menu-rounded" size="24" />
+                <Icon v-else name="material-symbols:menu-rounded" size="32" />
             </button>
         </div>
         <div class="header__mobile-menu">
