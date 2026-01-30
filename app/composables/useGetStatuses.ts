@@ -1,7 +1,7 @@
 export const useGetStatuses = () => {
     const { $i18n } = useNuxtApp()
 
-    return [
+    return computed(() => [
         {
             id: 0,
             name: $i18n.t('statuses.active'),
@@ -12,5 +12,5 @@ export const useGetStatuses = () => {
             name: $i18n.t('statuses.unActive'),
             color: '#EF4444',
         },
-    ]
+    ])
 }

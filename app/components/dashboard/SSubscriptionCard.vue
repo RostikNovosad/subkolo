@@ -1,15 +1,24 @@
 <script setup lang="ts">
-import { Calendar, MoreVertical } from 'lucide-vue-next'
+import { Calendar, MoreVertical, Pencil, Trash } from 'lucide-vue-next'
 import { useGetCurrencies } from '~/composables/useGetCurrencies'
 import type { Subscription } from '~/stores/subscriptions'
+import { useDateFormat } from '@vueuse/core'
 const props = defineProps<{
     subscription: Subscription
 }>()
 const { t } = useI18n()
 
+const emit = defineEmits<{
+    update: () => void
+    delete: () => void
+}>()
 const currencies = useGetCurrencies()
 const statuses = useGetStatuses()
 const billingTypes = useGetBillingTypes()
+
+const billingTypeName = computed(() =>
+    billingTypes.find((el) => el.id === props.subscription.billing_type)
+)
 </script>
 
 <template>
@@ -30,14 +39,38 @@ const billingTypes = useGetBillingTypes()
                         ?.name
                 }}
             </Badge>
+            <Popover>
+                <PopoverTrigger as-child>
+                    <Button
+                        variant="outline"
+                        size="icon"
+                        class="h-8 w-8 text-muted-foreground"
+                    >
+                        <MoreVertical class="h-4 w-4" />
+                    </Button>
+                </PopoverTrigger>
+                <PopoverContent class="w-fit p-2" align="end">
+                    <div class="flex flex-col gap-2">
+                        <Button
+                            variant="outline"
+                            size="icon"
+                            class="h-8 w-8 edit-icon"
+                            @click="$emit('update')"
+                        >
+                            <Pencil class="h-4 w-4" />
+                        </Button>
 
-            <!--            <Button-->
-            <!--                variant="outline"-->
-            <!--                size="icon"-->
-            <!--                class="h-8 w-8 text-muted-foreground"-->
-            <!--            >-->
-            <!--                <MoreVertical class="h-4 w-4" />-->
-            <!--            </Button>-->
+                        <Button
+                            variant="outline"
+                            size="icon"
+                            class="h-8 w-8 delete-icon"
+                            @click="$emit('delete')"
+                        >
+                            <Trash class="h-4 w-4" />
+                        </Button>
+                    </div>
+                </PopoverContent>
+            </Popover>
         </div>
 
         <CardHeader class="flex flex-row items-center gap-4 pb-2 !px-0">
@@ -88,7 +121,12 @@ const billingTypes = useGetBillingTypes()
                     <Calendar class="h-4 w-4" />
                     <span>
                         {{ t('subscription.nextBillingDate') }}:
-                        {{ subscription.next_billing_date }}
+                        {{
+                            useDateFormat(
+                                subscription.next_billing_date,
+                                'DD-MM-YYYY'
+                            )
+                        }}
                     </span>
                 </div>
             </div>

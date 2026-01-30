@@ -70,7 +70,8 @@
 			"completeAllField": "Заповніть всі поля",
 			"incorrectEmailFormat": "Неправильний формат електронної пошти",
 			"nameLength": "Ім'я має містити щонайменше 2 символи",
-			"passwordLength": "Пароль має містити щонайменше 6 символів"
+			"passwordLength": "Пароль має містити щонайменше 6 символів",
+			"errorOccurred": "Сталася помилка"
         },
 		"success": {
 			"success": "Успіх",
@@ -96,7 +97,8 @@
 		"createAccount": "Створити обліковий запис",
 		"alreadyHaveAccount": "Вже маєте обліковий запис?",
 		"email": "Електронна адреса",
-		"accountCreating": "Акаунт створюється"
+		"accountCreating": "Акаунт створюється",
+		"logout": "Вийти"
 	},
 	"actions": {
 		"actions": "Дії",

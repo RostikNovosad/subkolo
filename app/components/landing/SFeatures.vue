@@ -1,28 +1,31 @@
 <script setup lang="ts">
 const { t } = useI18n()
 
-const featureList = ref([
-    {
-        id: 0,
-        title: t('landing.features.list.0.title'),
-        description: t('landing.features.list.0.subtitle'),
-        icon: 'lucide:layout-dashboard',
-    },
-    {
-        id: 1,
-        title: t('landing.features.list.1.title'),
-        description: t('landing.features.list.1.subtitle'),
-        icon: 'lucide:users',
-        image: '',
-    },
-    {
-        id: 2,
-        title: t('landing.features.list.2.title'),
-        description: t('landing.features.list.2.subtitle'),
-        icon: 'lucide:bell-ring',
-        image: '',
-    },
-])
+const featureList = computed(() => {
+    return [
+        {
+            id: 0,
+            title: t('landing.features.list.0.title'),
+            description: t('landing.features.list.0.subtitle'),
+            icon: 'lucide:layout-dashboard',
+        },
+        {
+            id: 1,
+            title: t('landing.features.list.1.title'),
+            description: t('landing.features.list.1.subtitle'),
+            icon: 'lucide:users',
+            image: '',
+        },
+        {
+            id: 2,
+            title: t('landing.features.list.2.title'),
+            description: t('landing.features.list.2.subtitle'),
+            icon: 'lucide:bell-ring',
+            image: '',
+        },
+    ]
+})
+
 const featuresImages = ref([
     {
         id: 0,

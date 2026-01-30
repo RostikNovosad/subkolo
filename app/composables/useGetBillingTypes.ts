@@ -1,7 +1,7 @@
 export const useGetBillingTypes = () => {
     const { $i18n } = useNuxtApp()
 
-    return [
+    return computed(() => [
         {
             id: 1,
             name: $i18n.t('global.monthly'),
@@ -22,5 +22,5 @@ export const useGetBillingTypes = () => {
             name: $i18n.t('global.yearly'),
             color: '#10B981',
         },
-    ]
+    ])
 }

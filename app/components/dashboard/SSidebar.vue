@@ -1,34 +1,44 @@
 <script setup lang="ts">
 const { t } = useI18n()
-const route = useRoute()
+const supabase = useSupabaseClient()
 
-const user = ref({
-    name: 'shadcn',
-    email: 'm@example.com',
-    avatar: '/avatars/shadcn.jpg',
+const items = computed(() => {
+    return [
+        {
+            title: t('pages.subscription'),
+            url: '/dashboard/subscription',
+            icon: 'mingcute:bill-fill',
+        },
+        {
+            title: t('pages.group'),
+            url: '/dashboard/groups',
+            icon: 'flowbite:users-group-solid',
+        },
+    ]
 })
-const items = [
-    {
-        title: t('pages.subscription'),
-        url: '/dashboard/subscription',
-        icon: 'mingcute:bill-fill',
-    },
-    {
-        title: t('pages.group'),
-        url: '/dashboard/groups',
-        icon: 'flowbite:users-group-solid',
-    },
-]
+
+const logout = async () => {
+    try {
+        const { error } = await supabase.auth.signOut()
+        if (error) throw error
+
+        await navigateTo('/login')
+    } catch (e) {
+        console.error('Помилка при виході:', e)
+    }
+}
 </script>
 <template>
     <Sidebar>
         <SidebarHeader>
-            <div class="flex items-center gap-2">
-                <div
-                    class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
-                ></div>
+            <nuxt-link to="/dashboard" class="flex items-center gap-2">
+                <img
+                    src="/slogo.svg"
+                    alt="allio-logo"
+                    class="rounded-sm max-h-[32px]"
+                />
                 <span class="truncate font-semibold">SubKolo</span>
-            </div>
+            </nuxt-link>
         </SidebarHeader>
         <SidebarContent>
             <SidebarGroup>
@@ -54,7 +64,12 @@ const items = [
             </SidebarGroup>
         </SidebarContent>
         <SidebarFooter>
-            <DashboardSNavUser :user="user" />
+            <Button @click="logout">
+                <Icon name="lucide:log-out" size="24" />
+                <span>
+                    {{ t('auth.logout') }}
+                </span>
+            </Button>
         </SidebarFooter>
     </Sidebar>
 </template>

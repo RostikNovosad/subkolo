@@ -23,7 +23,6 @@ export const useAuthStore = defineStore('auth', () => {
     const { $i18n } = useNuxtApp()
 
     const login = (body: LoginPayload) => {
-        console.log('body: ', body)
         if (body.login === 'admin' && body.password === 'admin') {
             router.push('/dashboard')
         } else {
@@ -33,6 +32,13 @@ export const useAuthStore = defineStore('auth', () => {
 
     const register = (body: CreateUserPayload) => {
         toast.success($i18n.t('notifications.success.register'))
+    }
+
+    const logout = () => {
+        await supabase.auth.signInWithPassword({
+            email: loginData.value.email,
+            password: loginData.value.password,
+        })
     }
 
     return {

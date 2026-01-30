@@ -62,11 +62,12 @@ export default defineNuxtConfig({
     i18n: {
         // lazy: true,
         langDir: 'locales',
-        defaultLocale: 'ua',
-        strategy: 'prefix_except_default',
+        defaultLocale: 'uk',
+        // strategy: 'prefix_except_default',
+        strategy: 'no_prefix',
         locales: [
             { code: 'en', iso: 'en-US', file: 'en.json', name: 'English' },
-            { code: 'ua', iso: 'uk-UA', file: 'ua.json', name: 'Українська' },
+            { code: 'uk', iso: 'uk-UA', file: 'uk.json', name: 'Українська' },
         ],
         detectBrowserLanguage: false,
     },

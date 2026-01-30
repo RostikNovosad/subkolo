@@ -52,6 +52,11 @@
 				}
 			}
 		},
+		"feedback": {
+			"title": "Help us get better?",
+			"description": "We are still building SubKolo, and your feedback is our North Star. Share what you love and what’s missing. It’ll only take a minute",
+			"button": "Send review"
+		},
 		"footer": {
 			"title": "SubKolo",
 			"subtitle": "Life’s too short to remind people about Spotify payments every month.",
@@ -65,7 +70,8 @@
 			"completeAllField": "Complete all field",
 			"incorrectEmailFormat": "Incorrect email format",
 			"nameLength": "Name must be at least 2 characters long",
-			"passwordLength": "Password must be at least 6 characters long"
+			"passwordLength": "Password must be at least 6 characters long",
+			"errorOccurred": "Error occurred"
 		},
 		"success": {
 			"success": "Success",
@@ -91,8 +97,9 @@
 		"createAccount": "Create Account",
 		"alreadyHaveAccount": "Already have an account?",
 		"email": "Email",
-		"accountCreating": "Account creating"
-    },
+		"accountCreating": "Account creating",
+		"logout": "Log out"
+	},
 	"actions": {
 		"actions": "Actions",
 		"create": "Create",

@@ -25,8 +25,8 @@ export interface UpdateSubscriptionPayload {
     name: string
     price?: number
     currency?: number
-    billingType?: number
-    billingDay?: string | Date
+    billing_type?: number
+    next_billing_date?: string | Date
     status?: number
 }
 
@@ -38,57 +38,6 @@ export const useSubscriptionStore = defineStore('subscription', () => {
         total: 0,
         items: [],
     })
-
-    // const subscriptions = ref({
-    //     total: 5,
-    //     items: [
-    //         {
-    //             id: 1,
-    //             name: 'Netflix',
-    //             price: 489,
-    //             currency: 0,
-    //             billingType: 3,
-    //             nextBillingDate: '2026-02-15',
-    //             status: 1,
-    //         },
-    //         {
-    //             id: 2,
-    //             name: 'Spotify Premium',
-    //             price: 4.99,
-    //             currency: 1,
-    //             billingType: 1,
-    //             nextBillingDate: '2026-02-01',
-    //             status: 1,
-    //         },
-    //         {
-    //             id: 3,
-    //             name: 'ChatGPT Plus',
-    //             price: 20,
-    //             currency: 1,
-    //             billingType: 1,
-    //             nextBillingDate: '2026-02-24',
-    //             status: 0,
-    //         },
-    //         {
-    //             id: 4,
-    //             name: 'Adobe Creative Cloud',
-    //             price: 1200,
-    //             currency: 2,
-    //             billingType: 12,
-    //             nextBillingDate: '2026-11-10',
-    //             status: 1,
-    //         },
-    //         {
-    //             id: 5,
-    //             name: 'YouTube Premium',
-    //             price: 99,
-    //             currency: 0,
-    //             billingType: 1,
-    //             nextBillingDate: '2026-02-05',
-    //             status: 1,
-    //         },
-    //     ],
-    // })
 
     const getSubscriptions = async () => {
         try {
@@ -112,12 +61,46 @@ export const useSubscriptionStore = defineStore('subscription', () => {
             const { data, error } = await supabase
                 .from('subscriptions')
                 .insert(subscription as any)
-        } catch (error) {}
+
+            if (error) {
+                throw error
+            }
+        } catch (error) {
+            throw error
+        }
     }
 
-    const updateSubscription = () => {}
+    const updateSubscription = async (
+        subscription: UpdateSubscriptionPayload
+    ) => {
+        try {
+            const { data, error } = await supabase
+                .from('subscriptions')
+                .update(subscription)
+                .eq('id', subscription.id)
 
-    const deleteSubscription = () => {}
+            if (error) {
+                throw error
+            }
+        } catch (error) {
+            throw error
+        }
+    }
+
+    const deleteSubscription = async (id: number) => {
+        try {
+            const { data, error } = await supabase
+                .from('subscriptions')
+                .delete()
+                .eq('id', id)
+
+            if (error) {
+                throw error
+            }
+        } catch (error) {
+            throw error
+        }
+    }
 
     return {
         subscriptions,

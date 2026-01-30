@@ -12,7 +12,12 @@ import UpdateSubscription from '~/components/forms/UpdateSubscription.vue'
 import ConfirmModal from '~/components/forms/ConfirmModal.vue'
 const toast = useToast()
 
-const { getSubscriptions, createSubscription } = useSubscriptionStore()
+const {
+    getSubscriptions,
+    createSubscription,
+    updateSubscription,
+    deleteSubscription,
+} = useSubscriptionStore()
 
 const { subscriptions } = storeToRefs(useSubscriptionStore())
 
@@ -32,8 +37,6 @@ const statuses = useGetStatuses()
 const billingTypes = useGetBillingTypes()
 
 const createNewSubscription = async (data: CreateSubscriptionPayload) => {
-    console.log(data)
-    showCreateModal.value = false
     try {
         await createSubscription(data)
         toast.add({
@@ -43,23 +46,67 @@ const createNewSubscription = async (data: CreateSubscriptionPayload) => {
             life: 3000,
         })
         await getSubscriptions()
-    } catch (e) {}
+    } catch (e) {
+        toast.add({
+            severity: 'error',
+            summary: t('notifications.errors.error'),
+            detail: t('notifications.errors.errorOccurred'),
+            life: 3000,
+        })
+    } finally {
+        showCreateModal.value = false
+    }
 }
 
-const updateSubscription = async (data: UpdateSubscriptionPayload) => {
-    console.log(data)
-    showUpdateModal.value = false
+const updateCurrentSubscription = async (data: UpdateSubscriptionPayload) => {
+    try {
+        await updateSubscription(data)
+        toast.add({
+            severity: 'success',
+            summary: t('notifications.success.success'),
+            detail: t('notifications.success.wasUpdated'),
+            life: 3000,
+        })
+        await getSubscriptions()
+    } catch (e) {
+        toast.add({
+            severity: 'error',
+            summary: t('notifications.errors.error'),
+            detail: t('notifications.errors.errorOccurred'),
+            life: 3000,
+        })
+    } finally {
+        showUpdateModal.value = false
+    }
 }
 
-const deleteSubscription = async () => {
-    console.log(currentIdToDelete.value)
-    showDeleteModal.value = false
+const deleteCurrentSubscription = async () => {
+    try {
+        await deleteSubscription(currentIdToDelete.value)
+        toast.add({
+            severity: 'success',
+            summary: t('notifications.success.success'),
+            detail: t('notifications.success.wasDeleted'),
+            life: 3000,
+        })
+        await getSubscriptions()
+    } catch (e) {
+        toast.add({
+            severity: 'error',
+            summary: t('notifications.errors.error'),
+            detail: t('notifications.errors.errorOccurred'),
+            life: 3000,
+        })
+    } finally {
+        showDeleteModal.value = false
+    }
 }
 
 await getSubscriptions()
 
 definePageMeta({
     layout: 'dashboard',
+    middleware: 'auth',
 })
 </script>
 
@@ -72,10 +119,14 @@ definePageMeta({
         />
     </Dialog>
 
-    <Dialog :open="showUpdateModal" @update:open="showUpdateModal = $event">
+    <Dialog
+        :open="showUpdateModal"
+        @update:open="showUpdateModal = $event"
+        :key="currentDataToUpdate"
+    >
         <UpdateSubscription
             v-model:open="showUpdateModal"
-            @update="updateSubscription"
+            @update="updateCurrentSubscription"
             :current-data="currentDataToUpdate"
             @close="showUpdateModal = false"
         />
@@ -84,7 +135,7 @@ definePageMeta({
     <Dialog :open="showDeleteModal" @update:open="showDeleteModal = $event">
         <ConfirmModal
             v-model:open="showDeleteModal"
-            @delete="deleteSubscription"
+            @delete="deleteCurrentSubscription"
             @close="showDeleteModal = false"
         />
     </Dialog>
@@ -119,6 +170,14 @@ definePageMeta({
                 v-for="sub in subscriptions.items"
                 :key="sub.id"
                 :subscription="sub"
+                @update="[
+                    (showUpdateModal = true),
+                    (currentDataToUpdate = sub),
+                ]"
+                @delete="[
+                    (showDeleteModal = true),
+                    (currentIdToDelete = sub.id),
+                ]"
             />
         </div>
     </div>

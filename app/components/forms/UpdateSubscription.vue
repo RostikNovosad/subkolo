@@ -27,22 +27,23 @@ const df = computed(
     () => new DateFormatter(locale.value, { dateStyle: 'long' })
 )
 const dateValue = ref<CalendarDate>(
-    props.currentData?.nextBillingDate
-        ? parseDate(props.currentData.nextBillingDate)
+    props.currentData?.next_billing_date
+        ? parseDate(props.currentData.next_billing_date)
         : today(getLocalTimeZone())
 )
 const formData = ref({
+    id: props.currentData?.id,
     name: props.currentData?.name,
     price: props.currentData?.price,
     currency: props.currentData?.currency,
-    billingType: props.currentData?.billingType,
-    nextBillingDate: props.currentData?.nextBillingDate,
+    billing_type: props.currentData?.billing_type,
+    next_billing_date: props.currentData?.next_billing_date,
     status: props.currentData?.status,
 })
 
 watch(dateValue, (newDate) => {
     if (newDate) {
-        formData.value.nextBillingDate = newDate.toString()
+        formData.value.next_billing_date = newDate.toString()
     }
 })
 </script>
@@ -97,7 +98,7 @@ watch(dateValue, (newDate) => {
                     <Label for="name-1">
                         {{ t('subscription.billingType') }}
                     </Label>
-                    <Select v-model="formData.billingType">
+                    <Select v-model="formData.billing_type">
                         <SelectTrigger class="w-full">
                             <SelectValue
                                 :placeholder="t('subscription.billingType')"

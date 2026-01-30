@@ -6,14 +6,7 @@ import {
     SidebarMenuItem,
     useSidebar,
 } from '@/components/ui/sidebar'
-
-const props = defineProps<{
-    user: {
-        name: string
-        email: string
-        avatar: string
-    }
-}>()
+const user = useSupabaseUser()
 
 const { isMobile } = useSidebar()
 </script>
@@ -26,12 +19,13 @@ const { isMobile } = useSidebar()
                 class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
                 <Avatar class="h-8 w-8 rounded-lg">
-                    <AvatarImage :src="user.avatar" :alt="user.name" />
-                    <AvatarFallback class="rounded-lg"> CN </AvatarFallback>
+                    <AvatarFallback class="rounded-lg">S</AvatarFallback>
                 </Avatar>
                 <div class="grid flex-1 text-left text-sm leading-tight">
-                    <span class="truncate font-medium">{{ user.name }}</span>
-                    <span class="truncate text-xs">{{ user.email }}</span>
+                    <span class="truncate font-medium">
+                        {{ user?.user_metadata?.userName }}</span
+                    >
+                    <!--                    <span class="truncate text-xs">{{ user.email }}</span>-->
                 </div>
             </SidebarMenuButton>
         </SidebarMenuItem>
