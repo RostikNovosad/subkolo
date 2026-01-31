@@ -3,7 +3,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-    <div class="section hero" id="#hero">
+    <div class="section hero" id="hero">
         <div class="hero__content">
             <div class="hero__top">
                 <h1 class="hero__top-title">{{ t('landing.hero.title') }}</h1>

@@ -1,13 +1,13 @@
 <script setup lang="ts">
 const { t } = useI18n()
 
-const menu = ref([
-    { id: 0, title: t('landing.header.menu.home'), path: '#hero' },
-    { id: 1, title: t('landing.header.menu.aboutUs'), path: '#target' },
-    { id: 2, title: t('landing.header.menu.services'), path: '#advantages' },
-    { id: 3, title: t('landing.header.menu.features'), path: '#features' },
-    { id: 4, title: t('landing.header.menu.faq'), path: '#faq' },
-])
+const menu = computed(() => {
+    return [
+        { id: 0, title: t('landing.header.menu.home'), path: '#hero' },
+        { id: 1, title: t('landing.header.menu.features'), path: '#features' },
+        { id: 2, title: t('landing.header.menu.feedback'), path: '#feedback' },
+    ]
+})
 
 const mobileMenuOpen = ref(false)
 const openMobileMenu = () => {

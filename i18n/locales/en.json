@@ -20,13 +20,11 @@
     "landing": {
         "header": {
             "menu": {
-                "home": "Головна",
-                "aboutUs": "Про нас",
-                "services": "Сервіс",
-                "features": "Переваги",
-                "faq": "Питання"
+				"home": "Home",
+				"features": "Features",
+				"feedback": "Feedback"
             },
-            "cabinet": "Кабінет"
+            "cabinet": "Dashboard"
         },
 		"hero": {
 			"title": "Your Subscription Circle",

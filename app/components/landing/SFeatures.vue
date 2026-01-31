@@ -46,7 +46,7 @@ const featuresImages = ref([
 </script>
 
 <template>
-    <div class="section features" id="#features">
+    <div class="section features" id="features">
         <div class="features__content">
             <h2 class="features__title">{{ t('landing.features.title') }}</h2>
             <div class="features__list">

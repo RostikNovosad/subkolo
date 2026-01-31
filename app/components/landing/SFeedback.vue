@@ -3,7 +3,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-    <div class="section feedback" id="#feedback">
+    <div class="section feedback" id="feedback">
         <div class="feedback__content">
             <img
                 src="/slogo.svg"

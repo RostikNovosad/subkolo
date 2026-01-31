@@ -20,11 +20,9 @@
     "landing": {
         "header": {
             "menu": {
-                "home": "Головна",
-                "aboutUs": "Про нас",
-                "services": "Сервіс",
-                "features": "Переваги",
-                "faq": "Питання"
+				"home": "Головна",
+				"features": "Можливості",
+				"feedback": "Ваша думка"
             },
             "cabinet": "Кабінет"
         },
