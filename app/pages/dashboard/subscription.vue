@@ -1,15 +1,11 @@
 <script setup lang="ts">
 import { FolderCode } from 'lucide-vue-next'
-import CreateSubscription from '~/components/forms/CreateSubscription.vue'
 import type {
     CreateSubscriptionPayload,
     UpdateSubscriptionPayload,
 } from '~/stores/subscriptions'
 const { t } = useI18n()
 
-import { useGetCurrencies } from '~/composables/useGetCurrencies'
-import UpdateSubscription from '~/components/forms/UpdateSubscription.vue'
-import ConfirmModal from '~/components/forms/ConfirmModal.vue'
 const toast = useToast()
 
 const {
@@ -21,20 +17,11 @@ const {
 
 const { subscriptions } = storeToRefs(useSubscriptionStore())
 
-const params = ref({
-    page: 0,
-    pageSize: 10,
-})
-
 const showCreateModal = ref(false)
 const showUpdateModal = ref(false)
 const showDeleteModal = ref(false)
 const currentDataToUpdate = ref({})
 const currentIdToDelete = ref()
-
-const currencies = useGetCurrencies()
-const statuses = useGetStatuses()
-const billingTypes = useGetBillingTypes()
 
 const createNewSubscription = async (data: CreateSubscriptionPayload) => {
     try {
@@ -112,7 +99,7 @@ definePageMeta({
 
 <template>
     <Dialog :open="showCreateModal" @update:open="showCreateModal = $event">
-        <CreateSubscription
+        <FormsCreateSubscription
             v-model:open="showCreateModal"
             @create="createNewSubscription"
             @close="showCreateModal = false"
@@ -124,7 +111,7 @@ definePageMeta({
         @update:open="showUpdateModal = $event"
         :key="currentDataToUpdate"
     >
-        <UpdateSubscription
+        <FormsUpdateSubscription
             v-model:open="showUpdateModal"
             @update="updateCurrentSubscription"
             :current-data="currentDataToUpdate"
@@ -133,7 +120,7 @@ definePageMeta({
     </Dialog>
 
     <Dialog :open="showDeleteModal" @update:open="showDeleteModal = $event">
-        <ConfirmModal
+        <FormsConfirmModal
             v-model:open="showDeleteModal"
             @delete="deleteCurrentSubscription"
             @close="showDeleteModal = false"

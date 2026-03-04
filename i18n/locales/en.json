@@ -77,7 +77,8 @@
 			"loginSuccess": "Login success",
 			"wasCreated": "Successfully was created",
 			"wasDeleted": "Successfully was deleted",
-			"wasUpdated": "Successfully was updated"
+			"wasUpdated": "Successfully was updated",
+			"wasCopied": "Successfully was copied"
 		}
 	},
     "auth": {
@@ -107,12 +108,18 @@
 		"cancel": "Cancel",
 		"createSubscription": "Create subscription",
 		"updateSubscription": "Update subscription",
-		"deleteDescription": "Are you sure you want to delete this? We will not be able to restore this data if you change your mind"
+		"deleteDescription": "Are you sure you want to delete this? We will not be able to restore this data if you change your mind",
+		"createGroup": "Create group",
+		"deleteGroup": "Delete group",
+		"addMember": "Add member",
+		"generateInviteLink": "Generate invite link",
+		"createInvite": "Create invite"
 	},
 	"statuses": {
 		"status": "Status",
 		"active": "Active",
-		"unActive": "Un active"
+		"unActive": "Un active",
+		"pendingApprove": "Pending approve"
 	},
 	"subscription": {
 		"title": "Subscriptions",
@@ -123,5 +130,24 @@
 		"billingType": "Billing type",
 		"billingDay": "Billing day",
 		"nextBillingDate": "Next Billing Date"
+	},
+	"group": {
+		"title": "Groups",
+		"emptyTitle": "No groups yet",
+		"emptySubtitle": "You haven't created any groups yet. Start by creating your first group",
+		"createGroupDescription": "Create a group to share your subscription, set a member limit, and control access through individual invitations",
+		"subscription": "Subscription",
+		"maxMembers": "Number of participants",
+		"owner": "Owner",
+		"member": "Member",
+		"groupSubscription": "Group subscription",
+		"totalCost": "Total cost",
+		"slots": "Members",
+		"coveredAmount": "Covered amount",
+		"membersList": "Members list",
+		"emptySlot": "Empty slot",
+		"memberName": "Member name",
+		"addMemberDescription": "Set up a new place in the group: specify the contribution amount and choose exactly how you want to add a member",
+		"paymentAmount": "Payment Amount"
 	}
 }

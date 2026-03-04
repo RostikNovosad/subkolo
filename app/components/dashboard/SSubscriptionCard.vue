@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { Calendar, MoreVertical, Pencil, Trash } from 'lucide-vue-next'
 import { useGetCurrencies } from '~/composables/useGetCurrencies'
-import type { Subscription } from '~/stores/subscriptions'
 import { useDateFormat } from '@vueuse/core'
+
 const props = defineProps<{
     subscription: Subscription
 }>()
@@ -15,10 +15,6 @@ const emit = defineEmits<{
 const currencies = useGetCurrencies()
 const statuses = useGetStatuses()
 const billingTypes = useGetBillingTypes()
-
-const billingTypeName = computed(() =>
-    billingTypes.find((el) => el.id === props.subscription.billing_type)
-)
 </script>
 
 <template>

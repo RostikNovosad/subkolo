@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { toast } from 'vue-sonner'
 
 export interface Subscription {
     id: number
