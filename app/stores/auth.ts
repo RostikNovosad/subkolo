@@ -24,7 +24,7 @@ export const useAuthStore = defineStore('auth', () => {
 
     const login = (body: LoginPayload) => {
         if (body.login === 'admin' && body.password === 'admin') {
-            router.push('/dashboard')
+            router.push('/dashboard/subscription')
         } else {
             toast.error($i18n.t('notifications.errors.login'))
         }

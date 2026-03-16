@@ -14,7 +14,8 @@
 	},
 	"pages": {
 		"subscription": "Subscription",
-		"group": "Group"
+		"group": "Group",
+		"notification": "Notification"
 	},
 	"currency": {
 		"usd": "USD",
@@ -120,7 +121,8 @@
 		"createInvite": "Create invite",
 		"join": "Join",
 		"backToMain": "Back to main",
-		"leaveGroup": "Leave group"
+		"leaveGroup": "Leave group",
+		"connectTelegram": "Connect Telegram"
 	},
 	"statuses": {
 		"status": "Status",
@@ -160,5 +162,11 @@
 	"invite": {
 		"inviteFrom": "Invite from",
 		"expired": "Invite is non active"
+	},
+	"notification": {
+		"telegramBot": "Telegram bot",
+		"getNotification": "Get notified 1 day before payment",
+		"emailNotification": "Email notification",
+		"sendNotificationTo": "Send notification to"
 	}
 }

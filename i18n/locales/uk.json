@@ -14,7 +14,8 @@
 	},
 	"pages": {
 		"subscription": "Підписки",
-		"group": "Групи"
+		"group": "Групи",
+		"notification": "Сповіщення"
 	},
 	"currency": {
 		"usd": "USD",
@@ -120,7 +121,8 @@
 		"createInvite": "Створити запрошення",
 		"join": "Приєднатися",
 		"backToMain": "Повернутися на головну",
-		"leaveGroup": "Покинути групу"
+		"leaveGroup": "Покинути групу",
+		"connectTelegram": "Підключити Telegram"
 	},
 	"statuses": {
 		"status": "Статус",
@@ -160,5 +162,11 @@
 	"invite": {
 		"inviteFrom": "Запрошення від",
 		"expired": "Запрошення недійсне"
+	},
+	"notification": {
+		"telegramBot": "Telegram бот",
+		"getNotification": "Отримуйте сповіщення за 1 день до оплати",
+		"emailNotification": "Email сповіщення",
+		"sendNotificationTo": "Надсилати сповіщення на"
 	}
 }

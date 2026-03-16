@@ -51,9 +51,10 @@ const login = async () => {
                 life: 3000,
             })
         } else {
-            const redirectTo = (route.query.redirect as string) || '/dashboard'
+            const redirectTo =
+                (route.query.redirect as string) || '/dashboard/subscription'
 
-            if (redirectTo === '/dashboard') {
+            if (redirectTo === '/dashboard/subscription') {
                 toast.add({
                     severity: 'success',
                     summary: t('notifications.success.success'),

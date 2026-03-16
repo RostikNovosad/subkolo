@@ -14,6 +14,11 @@ const items = computed(() => {
             url: '/dashboard/groups',
             icon: 'flowbite:users-group-solid',
         },
+        {
+            title: t('pages.notification'),
+            url: '/dashboard/notifications',
+            icon: 'lucide:bell-dot',
+        },
     ]
 })
 
@@ -31,7 +36,10 @@ const logout = async () => {
 <template>
     <Sidebar>
         <SidebarHeader>
-            <nuxt-link to="/dashboard" class="flex items-center gap-2">
+            <nuxt-link
+                to="/dashboard/subscription"
+                class="flex items-center gap-2"
+            >
                 <img
                     src="/slogo.svg"
                     alt="allio-logo"
