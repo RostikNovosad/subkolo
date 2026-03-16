@@ -9,7 +9,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         } = await supabase.auth.getUser()
 
         if (!authUser) {
-            console.log('!user - дійсно не авторизований')
             return navigateTo('/login')
         }
     }

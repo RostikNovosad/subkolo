@@ -11,6 +11,7 @@ const {
     createInviteLink,
     deleteMember,
     deleteInvite,
+    leaveGroup,
 } = useGroupStore()
 const { t } = useI18n()
 const toast = useToast()
@@ -47,6 +48,10 @@ const inviteMember = async (data: AddMemberPayload) => {
                 group_id: id,
                 display_name: data.display_name,
                 price_to_set: data.assigned_cost,
+                subscription_name: group.value.subscription.name,
+                currency: group.value.subscription.currency,
+                billing_type: group.value.subscription.billing_type,
+                owner_name: user.value?.user_metadata?.userName,
             })
         } else {
             await addMember({
@@ -63,6 +68,22 @@ const inviteMember = async (data: AddMemberPayload) => {
         })
         await getGroup(id)
         showInviteModal.value = false
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+const leaveFromCurrentGroup = async () => {
+    try {
+        await leaveGroup(user.value.sub)
+        showLeaveModal.value = false
+        toast.add({
+            severity: 'success',
+            summary: t('notifications.success.success'),
+            detail: t('notifications.success.wasDeleted'),
+            life: 3000,
+        })
+        navigateTo(`/dashboard/groups`)
     } catch (error) {
         console.error(error)
     }
@@ -138,8 +159,7 @@ const totalCovered = computed(() => {
         (acc, i) => acc + i.price_to_set,
         0
     )
-    if (membersSum && invitesSum) return membersSum + invitesSum
-    return 0
+    return membersSum + invitesSum
 })
 
 const allMembers = computed(() => {
@@ -161,7 +181,10 @@ const occupiedSlots = computed(() => {
 })
 
 const copyLink = (token: string) => {
-    navigator.clipboard.writeText(token)
+    const invitePath = `${window.location.origin}/group/invite/${token}`
+
+    navigator.clipboard.writeText(invitePath)
+
     toast.add({
         severity: 'success',
         summary: t('notifications.success.success'),
@@ -211,6 +234,13 @@ definePageMeta({
             v-model:open="showInviteModal"
             @create="inviteMember"
             @close="showInviteModal = false"
+        />
+    </Dialog>
+    <Dialog :open="showLeaveModal" @update:open="showLeaveModal = $event">
+        <FormsConfirmModal
+            v-model:open="showLeaveModal"
+            @delete="leaveFromCurrentGroup"
+            @close="showLeaveModal = false"
         />
     </Dialog>
     <div class="flex flex-col gap-8">

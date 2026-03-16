@@ -4,9 +4,13 @@
 		"price": "Вартість",
 		"currency": "Валюта",
 		"monthly": "Місячна",
+		"month": "Місяць",
 		"quarterly": "Квартальна",
+		"quarter": "Квартал",
 		"halfYearly": "Піврічна",
-		"yearly": "Річна"
+		"halfYear": "Півріччя",
+		"yearly": "Річна",
+		"year": "Рік"
 	},
 	"pages": {
 		"subscription": "Підписки",
@@ -113,7 +117,10 @@
 		"deleteGroup": "Видалити групу",
 		"addMember": "Додати учасника",
 		"generateInviteLink": "Створити запрошувальне посилання",
-		"createInvite": "Створити запрошення"
+		"createInvite": "Створити запрошення",
+		"join": "Приєднатися",
+		"backToMain": "Повернутися на головну",
+		"leaveGroup": "Покинути групу"
 	},
 	"statuses": {
 		"status": "Статус",
@@ -149,5 +156,9 @@
 		"memberName": "Імʼя учасника",
 		"addMemberDescription": "Налаштуйте нове місце в групі: вкажіть суму внеску та оберіть, як саме ви хочете додати учасника",
 		"paymentAmount": "Сума оплати"
+	},
+	"invite": {
+		"inviteFrom": "Запрошення від",
+		"expired": "Запрошення недійсне"
 	}
 }

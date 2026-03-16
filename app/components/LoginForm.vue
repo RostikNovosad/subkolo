@@ -7,6 +7,8 @@ const supabase = useSupabaseClient()
 const toast = useToast()
 
 const { t } = useI18n()
+const route = useRoute()
+const router = useRouter()
 const isLoading = ref(false)
 const loginData = ref({
     email: '',
@@ -49,14 +51,18 @@ const login = async () => {
                 life: 3000,
             })
         } else {
-            toast.add({
-                severity: 'success',
-                summary: t('notifications.success.success'),
-                detail: t('notifications.success.loginSuccess'),
-                life: 3000,
-            })
+            const redirectTo = (route.query.redirect as string) || '/dashboard'
 
-            await navigateTo('/dashboard', { replace: true })
+            if (redirectTo === '/dashboard') {
+                toast.add({
+                    severity: 'success',
+                    summary: t('notifications.success.success'),
+                    detail: t('notifications.success.loginSuccess'),
+                    life: 3000,
+                })
+            }
+
+            await navigateTo(redirectTo, { replace: true })
         }
     } catch (e) {
         toast.add({

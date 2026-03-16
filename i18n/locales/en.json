@@ -4,9 +4,13 @@
 		"price": "Price",
 		"currency": "Currency",
 		"monthly": "Monthly",
+		"month": "Month",
 		"quarterly": "Quarterly",
+		"quarter": "Quarter",
 		"halfYearly": "Half yearly",
-		"yearly": "Yearly"
+		"halfYear": "Half year",
+		"yearly": "Yearly",
+		"year": "Year"
 	},
 	"pages": {
 		"subscription": "Subscription",
@@ -113,7 +117,10 @@
 		"deleteGroup": "Delete group",
 		"addMember": "Add member",
 		"generateInviteLink": "Generate invite link",
-		"createInvite": "Create invite"
+		"createInvite": "Create invite",
+		"join": "Join",
+		"backToMain": "Back to main",
+		"leaveGroup": "Leave group"
 	},
 	"statuses": {
 		"status": "Status",
@@ -149,5 +156,9 @@
 		"memberName": "Member name",
 		"addMemberDescription": "Set up a new place in the group: specify the contribution amount and choose exactly how you want to add a member",
 		"paymentAmount": "Payment Amount"
+	},
+	"invite": {
+		"inviteFrom": "Invite from",
+		"expired": "Invite is non active"
 	}
 }

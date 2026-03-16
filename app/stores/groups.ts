@@ -27,6 +27,10 @@ export interface AddMemberPayload {
     assigned_cost?: number
     is_invite?: boolean
     price_to_set?: number
+    subscription_name?: string
+    currency?: number
+    owner_name?: string
+    billing_type?: number
 }
 
 export const useGroupStore = defineStore('group', () => {
@@ -38,6 +42,7 @@ export const useGroupStore = defineStore('group', () => {
     })
 
     const group = ref()
+    const invite = ref()
 
     const getGroups = async () => {
         try {
@@ -91,7 +96,7 @@ export const useGroupStore = defineStore('group', () => {
             if (error) {
                 throw error
             }
-        } catch (e) {
+        } catch (error) {
             throw error
         }
     }
@@ -138,12 +143,18 @@ export const useGroupStore = defineStore('group', () => {
                 group_id: payload.group_id,
                 display_name: payload.display_name,
                 price_to_set: Number(payload.price_to_set),
+                subscription_name: payload.subscription_name,
+                currency: payload.currency,
+                owner_name: payload.owner_name,
+                billing_type: payload.billing_type,
             } as any)
 
             if (error) {
                 throw error
             }
-        } catch (e) {}
+        } catch (error) {
+            throw error
+        }
     }
 
     const deleteMember = async (memberId: string) => {
@@ -168,6 +179,51 @@ export const useGroupStore = defineStore('group', () => {
         } catch (e) {}
     }
 
+    const getInvite = async (token: string) => {
+        try {
+            const { error, data } = await supabase
+                .from('group_invites')
+                .select('*')
+                .eq('token', token)
+                .single()
+
+            if (error) {
+                invite.value = null
+                throw error
+            }
+
+            invite.value = data
+            return data
+        } catch (e) {}
+    }
+
+    const joinGroup = async (body, token: string) => {
+        try {
+            const { error: memberError } = await supabase
+                .from('group_members')
+                .insert(body as any)
+            if (memberError) {
+                throw memberError
+            }
+
+            const { error: deleteError } = await supabase
+                .from('group_invites')
+                .delete()
+                .eq('token', token)
+        } catch (error) {}
+    }
+
+    const leaveGroup = async (id: string) => {
+        try {
+            const { error } = await supabase
+                .from('group_members')
+                .delete()
+                .eq('user_id', id)
+
+            if (error) throw error
+        } catch (e) {}
+    }
+
     return {
         getGroups,
         groups,
@@ -180,5 +236,9 @@ export const useGroupStore = defineStore('group', () => {
         createInviteLink,
         deleteMember,
         deleteInvite,
+        getInvite,
+        invite,
+        joinGroup,
+        leaveGroup,
     }
 })

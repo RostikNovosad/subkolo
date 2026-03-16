@@ -13,7 +13,6 @@ const showCreateModal = ref(false)
 
 const createNewGroup = async (data: CreateGroupPayload) => {
     try {
-        console.log(data)
         await createGroup(data)
         toast.add({
             severity: 'success',
