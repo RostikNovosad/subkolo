@@ -138,7 +138,10 @@
 		"serviceName": "Service name",
 		"billingType": "Billing type",
 		"billingDay": "Billing day",
-		"nextBillingDate": "Next Billing Date"
+		"nextBillingDate": "Next Billing Date",
+		"sum": "Sum",
+		"yourShare": "Your share",
+		"due": "Due"
 	},
 	"group": {
 		"title": "Groups",

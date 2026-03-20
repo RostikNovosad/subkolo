@@ -87,7 +87,7 @@ const timeLabel = computed(() => {
         >
             <span
                 class="text-[10px] text-muted-foreground uppercase tracking-wider"
-                >Сума:</span
+                >{{ t('subscription.sum') }}:</span
             >
             <span class="text-lg font-bold text-muted-foreground">
                 {{ member.price_to_set }}
@@ -134,7 +134,11 @@ const timeLabel = computed(() => {
             <span
                 class="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold"
             >
-                {{ member.type === 'owner' ? 'Ваша частка:' : 'До сплати:' }}
+                {{
+                    member.type === 'owner'
+                        ? `${t('subscription.yourShare')}:`
+                        : `${t('subscription.due')}:`
+                }}
             </span>
             <span
                 class="text-[32px] font-black tracking-tight"

@@ -138,7 +138,10 @@
 		"serviceName": "Назва сервісу",
 		"billingType": "Тип підписки",
 		"billingDay": "День оплати",
-		"nextBillingDate": "Дата наступної оплати"
+		"nextBillingDate": "Дата наступної оплати",
+		"sum": "Сума",
+		"yourShare": "Ваша частка",
+		"due": "До сплати"
 	},
 	"group": {
 		"title": "Групи",
