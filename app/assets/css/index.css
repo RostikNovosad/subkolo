@@ -25,7 +25,7 @@
 }
 
 @media screen and (max-width: 480px) {
-    :root {
-        --p-toast-width: 20rem !important;
+    .p-toast {
+        width: 20rem !important;
     }
 }

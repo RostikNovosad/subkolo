@@ -15,6 +15,11 @@ const formData = ref({
 
 const handleSubmit = () => {
     emit('create', formData.value)
+    formData.value = {
+        display_name: '',
+        assigned_cost: undefined,
+        is_invite: false,
+    }
 }
 </script>
 
@@ -45,6 +50,8 @@ const handleSubmit = () => {
                         id="cost"
                         v-model="formData.assigned_cost"
                         type="number"
+                        step="0.01"
+                        min="0"
                         placeholder="0.00"
                         class="no-spin pr-12"
                         required

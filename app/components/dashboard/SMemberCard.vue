@@ -78,7 +78,7 @@ const timeLabel = computed(() => {
         <div class="flex items-center gap-2 my-2">
             <MailQuestion class="h-5 w-5 text-muted-foreground" />
             <span class="text-sm font-medium text-muted-foreground truncate">
-                {{ t('statuses.pendingApprove') }}...
+                {{ member.display_name }}
             </span>
         </div>
 

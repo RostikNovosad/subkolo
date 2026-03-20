@@ -74,7 +74,7 @@ export const useGroupStore = defineStore('group', () => {
             const { data, error } = await supabase
                 .from('groups')
                 .select(
-                    `*, subscription:subscriptions (*), group_members (*), pending_invites:group_invites (*)
+                    `*, subscription:subscriptions (*), group_members!group_id(*), pending_invites:group_invites!group_id(*)
             `
                 )
                 .eq('id', id)

@@ -17,6 +17,14 @@ const formData = ref({
 })
 
 await getSubscriptions()
+
+const handleSubmit = () => {
+    emit('create', formData.value)
+    formData.value = {
+        subscription_id: undefined,
+        max_members: undefined,
+    }
+}
 </script>
 
 <template>
@@ -67,7 +75,7 @@ await getSubscriptions()
                         {{ t('actions.cancel') }}
                     </Button>
                 </DialogClose>
-                <Button type="submit" @click="emit('create', formData)">
+                <Button type="submit" @click="handleSubmit">
                     {{ t('actions.create') }}
                 </Button>
             </DialogFooter>

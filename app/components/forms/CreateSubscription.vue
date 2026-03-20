@@ -45,6 +45,19 @@ watch(dateValue, (newDate) => {
         formData.value.next_billing_date = newDate.toString()
     }
 })
+
+const handleSubmit = () => {
+    emit('create', formData.value)
+
+    formData.value = {
+        name: '',
+        price: undefined,
+        currency: undefined,
+        billing_type: undefined,
+        next_billing_date: dateValue.value.toString(),
+        status: undefined,
+    }
+}
 </script>
 
 <template>
@@ -176,7 +189,7 @@ watch(dateValue, (newDate) => {
                         {{ t('actions.cancel') }}
                     </Button>
                 </DialogClose>
-                <Button type="submit" @click="emit('create', formData)">
+                <Button type="submit" @click="handleSubmit">
                     {{ t('actions.create') }}
                 </Button>
             </DialogFooter>
