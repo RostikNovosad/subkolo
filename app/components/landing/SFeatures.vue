@@ -30,17 +30,17 @@ const featuresImages = ref([
     {
         id: 0,
         image: '/feature-1.png',
-        alt: '',
+        alt: 'subscription',
     },
     {
         id: 1,
-        image: '/feature-1.png',
-        alt: '',
+        image: '/feature-2.png',
+        alt: 'group',
     },
     {
         id: 2,
-        image: '/feature-1.png',
-        alt: '',
+        image: '/feature-3.png',
+        alt: 'notification',
     },
 ])
 </script>
