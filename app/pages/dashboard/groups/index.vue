@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { FolderCode } from 'lucide-vue-next'
 import { type CreateGroupPayload } from '~/stores/groups'
-import CreateGroup from '~/components/forms/CreateGroup.vue'
 const { t } = useI18n()
 const toast = useToast()
 const { groups } = storeToRefs(useGroupStore())
@@ -76,8 +75,6 @@ definePageMeta({
             </Button>
         </div>
         <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-            <!--            <pre>{{ groups }}</pre>-->
-            <!--            <pre>{{ user }}</pre>-->
             <DashboardSGroupCard
                 v-for="group in groups.items"
                 :key="group.id"

@@ -58,7 +58,11 @@
 		"feedback": {
 			"title": "Help us get better?",
 			"description": "We are still building SubKolo, and your feedback is our North Star. Share what you love and what’s missing. It’ll only take a minute",
-			"button": "Send review"
+			"button": "Send review",
+			"modalTitle": "Help SubKolo become better",
+			"modalSubtitle": "Share your experience. Your tips help us develop and help others finally tame their subscriptions",
+			"author": "Your name",
+			"feedback": "Feedback"
 		},
 		"footer": {
 			"title": "SubKolo",
@@ -83,7 +87,8 @@
 			"wasCreated": "Successfully was created",
 			"wasDeleted": "Successfully was deleted",
 			"wasUpdated": "Successfully was updated",
-			"wasCopied": "Successfully was copied"
+			"wasCopied": "Successfully was copied",
+			"wasSended": "Sent successfully. Thanks for your feedback"
 		}
 	},
     "auth": {
